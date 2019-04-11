@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { auth } from '../FirebaseConf'
+import { auth, googleProvider } from '../FirebaseConf'
 
 import Forms from './Forms'
 
@@ -37,6 +37,12 @@ class Auth extends React.Component {
     auth.signOut()
   }
 
+  onLogInByGoogleClick = () => {
+    auth.signInWithPopup(googleProvider)
+      .catch(console.log)
+
+  }
+
   render() {
     return (
       <div>
@@ -57,6 +63,8 @@ class Auth extends React.Component {
               onEmailChange={this.onEmailChange}
               onPasswordChange={this.onPasswordChange}
               onLogInClick={this.onLogInClick}
+
+              onLogInByGoogleClick={this.onLogInByGoogleClick}
             />
         }
       </div>

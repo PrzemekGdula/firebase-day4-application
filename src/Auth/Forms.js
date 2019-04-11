@@ -13,7 +13,9 @@ const Forms = (props) => (
             onPasswordChange={props.onPasswordChange}
             onLogInClick={props.onLogInClick}
         />
-        <LogByGoogleForm />
+        <LogByGoogleForm
+            onLogInByGoogleClick={props.onLogInByGoogleClick}
+        />
         <RegistrationForm />
     </div>
 )

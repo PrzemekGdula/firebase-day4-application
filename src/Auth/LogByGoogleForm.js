@@ -2,7 +2,11 @@ import React from 'react'
 
 const LogByGoogleForm = (props) => (
     <div>
-        LogByGoogleForm
+        <button
+            onClick={props.onLogInByGoogleClick}
+        >
+            LOGIN BY GOOGLE
+        </button>
     </div>
 )
 
