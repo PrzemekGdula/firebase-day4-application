@@ -30,7 +30,11 @@ class Auth extends React.Component {
       this.state.email,
       this.state.password,
     )
-      .catch(console.log)
+      .catch(console.log) // here we can display error messages to users
+  }
+
+  onLogOutClick = () => {
+    auth.signOut()
   }
 
   render() {
@@ -38,7 +42,14 @@ class Auth extends React.Component {
       <div>
         {
           this.state.isUserLoggedIn ?
-            this.props.children
+            <div>
+              <button
+                onClick={this.onLogOutClick}
+              >
+                LOG OUT
+            </button>
+              {this.props.children}
+            </div>
             :
             <Forms
               email={this.state.email}
