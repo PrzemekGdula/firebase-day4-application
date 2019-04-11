@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { auth } from '../FirebaseConf'
+
 import Forms from './Forms'
 
 class Auth extends React.Component {
@@ -9,9 +11,27 @@ class Auth extends React.Component {
     password: 'password',
   }
 
+  componentDidMount() {
+    auth.onAuthStateChanged(
+      (user) => {
+        if (user) {
+          this.setState({ isUserLoggedIn: true })
+        } else {
+          this.setState({ isUserLoggedIn: false })
+        }
+      }
+    )
+  }
+
   onEmailChange = (event) => this.setState({ email: event.target.value })
   onPasswordChange = (event) => this.setState({ password: event.target.value })
-  onLogInClick = () => { }
+  onLogInClick = () => {
+    auth.signInWithEmailAndPassword(
+      this.state.email,
+      this.state.password,
+    )
+      .catch(console.log)
+  }
 
   render() {
     return (
