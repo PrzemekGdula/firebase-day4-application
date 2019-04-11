@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Forms from './Forms'
+
 class Auth extends React.Component {
   state = {
     isUserLoggedIn: false,
@@ -11,7 +13,7 @@ class Auth extends React.Component {
           this.state.isUserLoggedIn ?
             this.props.children
             :
-            'Forms'
+            <Forms />
         }
       </div>
     )
